@@ -17,6 +17,7 @@
     "@shadcn/ui": "^0.0.4",
     "@tailwindcss/postcss": "^4.0.9",
     "@tailwindcss/vite": "^4.0.9",
+    "appwrite": "^17.0.2",
     "browser-router": "^0.2.0",
     "class-variance-authority": "^0.7.1",
     "firebase": "^11.5.0",

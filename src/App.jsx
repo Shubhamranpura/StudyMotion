@@ -8,7 +8,6 @@ import Login from './Componant/Auth/Login';
 import Signup from './Componant/Auth/Signup';
 import Emailcheak from './Componant/Auth/Emailcheak';
 import Dashboard from './Dashboard/Dashboard';
-import { initializeAuth } from './slice/authslice';
 import PrivateRoute from './Componant/CommonComp/privateRoute';
 import './App.css';
 import './index.css';
@@ -22,17 +21,6 @@ import Instructorlinks from './Componant/CommonComp/instructorlinks';
 import Studentroutes from "./Componant/CommonComp/Studentroutes"
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    // Add error handling for the auth initialization
-    try {
-      dispatch(initializeAuth());
-    } catch (error) {
-      console.error("Failed to initialize auth:", error);
-    }
-  }, [dispatch]);
-
   return (
     <>
       <div className='min-h-screen max-w-screen bg-[#141414] flex flex-col font-inter'>
@@ -46,25 +34,23 @@ function App() {
             <PrivateRoute>
               <Dashboard />
             </PrivateRoute>
-            // <Dashboard/>
           } />
           <Route path='/catalog' element={
             <PrivateRoute>
               <Studentroutes>
-              <Catalog />
+                <Catalog />
               </Studentroutes>
             </PrivateRoute>
           } />
-          {/* <Route path="/course/:courseTitle/:instructor" element={<CourseDetails/>} /> */}
           <Route path="/course/:title/:instructor" element={<CourseDetails />} />
           <Route path="/cart" element={<Cart/>} />
           <Route path="/about" element={<Aboutus/>} />
           <Route path="/contact" element={<ContactUs/>} />
           <Route path="/add-course" element={
-            <Instructorlinks>  <Addcourse/></Instructorlinks>
+            <Instructorlinks>
+              <Addcourse/>
+            </Instructorlinks>
           } />
-
-
         </Routes>
       </div>
       <ToastContainer />

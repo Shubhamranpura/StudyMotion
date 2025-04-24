@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { StrictMode, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
@@ -8,12 +8,17 @@ import { configureStore } from '@reduxjs/toolkit'
 import rootReducer from './reducer/index.js'
 import { Toaster } from 'react-hot-toast'
 import Dashboard from './Dashboard/Dashboard.jsx'
-const store  = configureStore({
-  reducer:rootReducer
+import { initializeAuth } from './slice/authslice.js'
+
+const store = configureStore({
+  reducer: rootReducer
 })
 
+// Initialize auth state
+store.dispatch(initializeAuth())
+
 createRoot(document.getElementById('root')).render(
-  <StrictMode >
+  <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <App />

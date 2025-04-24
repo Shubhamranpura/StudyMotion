@@ -19,7 +19,7 @@ function Navbar() {
   const matchRoute = (route) => (route ? matchPath(route, location.pathname) : false);
 
   useEffect(() => {
-    console.log("Navbar rendered. Token:", token);
+    // console.log("Navbar rendered. Token:", token);
     console.log("User role in Navbar:", role);
   }, [token, role]);
 
@@ -32,7 +32,6 @@ function Navbar() {
     });
   }, [role]);
 
-  // Don't render navbar links until role is determined
  
 
   return (

@@ -60,8 +60,9 @@ const Login = () => {
     try {
       setLoading(true);
       const userCredential = await signInWithGoogle();
+      console.log(userCredential.uid)
 
-      const uid = userCredential.user.uid;
+      const uid = userCredential.uid;
       const docRef = doc(db, "user", uid);
       const docSnap = await getDoc(docRef);
 
